@@ -5,5 +5,5 @@ import { z } from "zod";
 export const userSchema = z.object({
     name: z.string(),
     age: z.number(),
-    isAdmin: z.boolean(),
+    isAdmin: z.boolean()
 }).strict();

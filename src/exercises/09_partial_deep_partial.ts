@@ -4,5 +4,18 @@ import { z } from "zod";
 // TODO: Create a userSchema with nested address:
 // { name, email, address: { street, city, zip } }
 // Then create userUpdateSchema as a deep partial of userSchema.
-export const userSchema = z.object({}).strict();
-export const userUpdateSchema = z.object({}).strict();
+export const userSchema = z
+  .object({
+    name: z.string(),
+    email: z.string().email(),
+    address: z
+      .object({
+        street: z.string(),
+        city: z.string(),
+        zip: z.string(),
+      })
+      .strict(),
+  })
+  .strict();
+
+export const userUpdateSchema = userSchema.deepPartial(); // no replacemend in zod v4

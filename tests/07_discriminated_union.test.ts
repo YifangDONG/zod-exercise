@@ -21,4 +21,14 @@ describe("Exercise 07", () => {
 
     expect(result.success).toBe(false);
   });
+  it("accepts push notification", () => {
+    const result = notificationSchema.safeParse({
+      type: "push",
+      deviceId: "device123",
+      title: "New Alert",
+      body: "You have a new alert"
+    });
+
+    expect(result.success).toBe(true);
+  });
 });

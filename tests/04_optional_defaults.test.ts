@@ -27,4 +27,12 @@ describe("Exercise 04", () => {
       pageSize: 50
     });
   });
+
+  it("invalid pageSize throws error", () => {
+    const data = preferencesSchema.safeParse({ 
+      pageSize: 50.5 
+    });
+    expect(data.success).toBe(false);
+  });
+
 });

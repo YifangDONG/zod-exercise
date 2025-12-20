@@ -6,4 +6,9 @@ import { z } from "zod";
 // - notifications: boolean (default true)
 // - locale: string (default "en-US")
 // - pageSize: int between 5 and 100 (default 20)
-export const preferencesSchema = z.object({}).strict();
+export const preferencesSchema = z.object({
+    theme: z.enum(["light", "dark"]).default("light"),
+    notifications: z.boolean().default(true),
+    locale: z.string().default("en-US"),
+    pageSize: z.number().int().min(5).max(100).default(20)
+}).strict();
